@@ -5,7 +5,7 @@ function getData(){
     setTimeout( () => {
       console.log("Promise completada")
       resolve(viajes)
-    }, 1 )
+    }, 1000 )
   })
 }
 

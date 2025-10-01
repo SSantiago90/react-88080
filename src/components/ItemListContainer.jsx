@@ -1,13 +1,22 @@
 import Item from "./Item";
-import viajes from '../data/data.js';
-import getData from "../data/mockAPIService.js";
 
+import getData from "../data/mockAPIService.js";
+import {useState, useEffect} from "react";
+
+// * 1. Crear un estado -> useState
+// * 2. hacer el "fetch" de datos en un useEffect
 function ItemListContainer( props ){
-  // async/await
-  // then/catch
-  getData()
-  .then( (data) => console.log("Datos recibidos", data))
-  .catch()
+  const [viajes, setViajes] = useState([]);
+  // getData simula un fetch
+  useEffect(() =>{
+    getData()
+    .then( (data) => {
+      console.log("Datos recibidos", data)
+      setViajes(data)
+    })
+    .catch()
+  }, [])
+  
 
   return (
     <section className="itemlist">
