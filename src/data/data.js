@@ -23,7 +23,7 @@ const viajes = [
         title: "Safari Fotográfico en Kenia",
         category: "Aventura",
         price: 4500,
-        img: "https://placehold.co/600x400?text=Safari+en+Kenia",
+        img: "https://placehold.co/600x400/7733aa/FFF?text=Safari+Kenia",
         stock: 8,
         description: "Experimenta la vida salvaje de África en un safari de 8 días por la reserva Masai Mara. Avistamiento de los 'Cinco Grandes' garantizado."
     },
