@@ -1,21 +1,28 @@
 import Item from "./Item";
 
-import getData from "../data/mockAPIService.js";
+import getData, { getProductsByCategory } from "../data/mockAPIService.js";
 import {useState, useEffect} from "react";
+import { useParams } from "react-router";
 
-// * 1. Crear un estado -> useState
-// * 2. hacer el "fetch" de datos en un useEffect
 function ItemListContainer( props ){
   const [viajes, setViajes] = useState([]);
-  // getData simula un fetch
+  const { catParam } = useParams(); 
+  //  { catParam: "Playa"}
+  //  { }
+
   useEffect(() =>{
-    getData()
-    .then( (data) => {
-      console.log("Datos recibidos", data)
-      setViajes(data)
-    })
-    .catch()
-  }, [])
+    if ( catParam ){
+        getProductsByCategory(catParam)
+        .then(  (data) => setViajes(data))
+    }
+    else {
+       getData()
+      .then( (data) => {
+        console.log("Datos recibidos", data)
+        setViajes(data)
+      })
+    }   
+  }, [ catParam ])
   
 
   return (
@@ -23,10 +30,9 @@ function ItemListContainer( props ){
       <h3>-- {props.greeting} -- </h3>
       {
         viajes.map( item =>                  
-        <Item 
-          title={ item.title } 
-          price={ item.price } 
-          img={ item.img }
+          <Item 
+            key={item.id}
+            { ...item}  
           />                   
         ) 
       }

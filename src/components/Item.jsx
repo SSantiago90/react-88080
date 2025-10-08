@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 export default function Item( props ) {
   const texto = `Soy el producto ${props.title}`
   console.log(texto)
@@ -10,7 +11,10 @@ export default function Item( props ) {
     /> 
       <h4>{ props.title }</h4>
       <p>Precio: ${ props.price }</p>
-    <button>Ver detalle</button>
+
+       <Link to={ `/detail/${props.id}` }>
+         <button>Ver detalle</button>
+       </Link>
   </div>
 }
 
