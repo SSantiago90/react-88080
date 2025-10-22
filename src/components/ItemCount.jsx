@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
+import cartContext from "../context/cartContext";
 
 
-function ItemCount(){    
+function ItemCount( { product }){      
   const [count, setCount] = useState(1)
   const [ limit, setLimit ] = useState(false)
   const maxValue = 10;
+
+  const { addItem } = useContext(cartContext) //{ cart: cartItems, addItem }
 
   console.log("❗Renderizando ItemCount... ")
 
@@ -25,16 +28,23 @@ function ItemCount(){
     if (count > 0)
      { setCount( count-1 ) }
   }
-  
+
+  function addToCart(){
+    addItem( { ...product, quantity: count } )
+  }
+
   return (
-    <div id="counter-button">
-      <button onClick={ restar } >-</button>
-      <p>{ count }</p>
-      <button onClick={ sumar }>+</button>
-      {
-         limit? <p>Alcanzaste el máximo de productos</p> : <></>
-      }
-    </div>
+    <div>
+      <div style={{ display: "flex", gap: "10px", justifyContent: "center"}} id="counter-button">
+        <button onClick={ restar } >-</button>
+        <p>{ count }</p>
+        <button onClick={ sumar }>+</button>
+      </div>
+        {
+          limit? <p>Alcanzaste el máximo de productos</p> : <></>
+        }
+      <button onClick={addToCart}>Agregar</button>
+      </div>
   )
 }
 

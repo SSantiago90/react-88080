@@ -1,5 +1,19 @@
+// * 3. Consumir el context
+import { useContext } from "react";
+import cartContext from "../context/cartContext";
+import { Link } from "react-router";
 function CartWidget(){
-  return (<div>🛒</div>)
+  const { countItemsInCart } = useContext(cartContext);
+  
+
+  return (<div>
+
+    <Link to="/cart">
+      🛒
+      { countItemsInCart() }
+    </Link>
+
+    </div>)
 }
 
 export default CartWidget;
