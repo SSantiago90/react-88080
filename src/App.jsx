@@ -6,16 +6,18 @@ import NavBar from './components/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { CartContextProvider } from './context/cartContext';
 import CartContainer from './components/CartContainer';
+import { exportProducts } from './data/FirestoreService';
 
 function App(){   
   return (
     <BrowserRouter>       
+    <button onClick={exportProducts}>Borrar despues</button>
      <CartContextProvider>
         <NavBar/> 
         <Routes>
            <Route 
             path="/" 
-            element={  <ItemListContainer greeting={"Tienda de Remeras Dev"}/> }
+            element={  <ItemListContainer greeting={"ViajesApp"}/> }
            />
            <Route
             path="/detail/:idParam"

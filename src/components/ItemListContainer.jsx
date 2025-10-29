@@ -1,10 +1,14 @@
 import Item from "./Item";
+import "./ItemListContainer.css"
 
-import getData, { getProductsByCategory } from "../data/mockAPIService.js";
+
 import {useState, useEffect} from "react";
 import { useParams } from "react-router";
+import getData, {getProductsByCategory} from '../data/FirestoreService.js'
 
 function ItemListContainer( props ){
+  getData();
+  
   const [viajes, setViajes] = useState([]);
   const { catParam } = useParams(); 
   //  { catParam: "Playa"}
@@ -26,8 +30,10 @@ function ItemListContainer( props ){
   
 
   return (
-    <section className="itemlist">
-      <h3>-- {props.greeting} -- </h3>
+    <section>
+      <h3>{props.greeting}</h3>
+      <div  className="itemlist">
+
       {
         viajes.map( item =>                  
           <Item 
@@ -36,6 +42,7 @@ function ItemListContainer( props ){
           />                   
         ) 
       }
+      </div>
     </section>
 )
 }

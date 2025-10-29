@@ -1,10 +1,11 @@
 import { Link } from "react-router"
+import './Item.css'
+
 export default function Item( props ) {
   const texto = `Soy el producto ${props.title}`
   console.log(texto)
-  //inline styles
 
-  return <div className="item-card" style={ { border: "solid 1px grey", backgroundColor: "#131111ff", margin: "10px" } }>
+  return <div className="item-card">
     <img 
       width="120" 
       src={ props.img } alt="remera-roja"

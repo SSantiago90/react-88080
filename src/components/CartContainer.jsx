@@ -1,8 +1,34 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import cartContext from "../context/cartContext";
+import { createBuyOrder } from "../data/FirestoreService";
 
 function CartContainer(){
-  const { cart } = useContext(cartContext);
+  const { cart, clearCart } = useContext(cartContext);
+  const [orderCreated, setOrderCreated] = useState(false);
+
+  async function handleCheckout(){
+    const orderData= {
+      buyer: { name:"Valentina", email: "valen2000@yahoo.net", phone: 123 },
+      cart,
+      total: 999,
+      date: new Date(),
+    }
+
+    const response = await createBuyOrder(orderData);
+    alert(`Gracias por tu compra! este es el id de tu orden de compra: ${response.id}`)
+    // sweet-alert, toast
+    // renderizado condicional
+    setOrderCreated(response.id)
+    clearCart();
+  }
+
+
+  if(orderCreated){
+    return <section>
+      <h2>Gracias por tu compra!</h2>
+      <p>Este es el id: {orderCreated}</p>
+    </section>
+  }
 
   return <section>
     <h1>Tu carrito de compras</h1>
@@ -18,8 +44,10 @@ function CartContainer(){
     <hr/>
     <div>
       Total de tu compra: $999
-      <button>Ir a pagar</button>
     </div>
+
+      <button onClick={handleCheckout}>Confirmar compra</button>
+      
   </section>
 }
 

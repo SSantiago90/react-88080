@@ -16,7 +16,7 @@ export function CartContextProvider( { children }  ){
   }
 
   function clearCart(){
-    /*  Vaciar el carrito de compras del context */
+    console.log("Not implemented")
   }
 
   function countItemsInCart(){
