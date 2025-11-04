@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
 import cartContext from "../context/cartContext";
 import { createBuyOrder } from "../data/FirestoreService";
+import CheckoutForm from "./CheckoutForm";
 
 function CartContainer(){
   const { cart, clearCart } = useContext(cartContext);
   const [orderCreated, setOrderCreated] = useState(false);
 
-  async function handleCheckout(){
+  async function handleCheckout(formData){
     const orderData= {
-      buyer: { name:"Valentina", email: "valen2000@yahoo.net", phone: 123 },
+      buyer: formData,
       cart,
       total: 999,
       date: new Date(),
@@ -46,7 +47,8 @@ function CartContainer(){
       Total de tu compra: $999
     </div>
 
-      <button onClick={handleCheckout}>Confirmar compra</button>
+    <CheckoutForm handleCheckout={handleCheckout}/>
+            
       
   </section>
 }

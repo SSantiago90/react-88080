@@ -49,6 +49,11 @@ export async function getProductsByCategory(categParam){
   return dataDocs;
 }
 
+/**
+ * Esta función crea una orden en un documento en Firestore.
+ * @param orderData -  { buyer, cart, total, date }
+ * @returns newDoc - { id del nuevo documento }
+ */
 export async function createBuyOrder(orderData){
   const ordersRef = collection(db, "orders")
   const newDoc = await addDoc(ordersRef, orderData)

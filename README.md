@@ -1,28 +1,15 @@
-# React + Vite
 
-# Pre-Entrega 1
+## How To Use
 
-- Crear el proyecto utilizando Vite JS
-- Crear el componente ItemListContainer y pasarle una prop "greeting"
-- Crear NavBar con un menu de navegación con: Logo, categorias, y CartWidget
-- Creat CartWidget con una imagen/icono/emoji del carrito de compras
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-# Pre-Entrega 2
+```bash
+# Clone this repository
+$ git clone (url del repositorio)>
 
- - Instalar react-router (npm i react-router)
- - Configurar en el componente App la navegación con los componentes: BrowserRouter, Routes, Route
- - Genera links con el componente Link para poder navegar: tanto en NavBar como en Item (ver detalle)
- - Crear ItemDetailContainer, mostrando los detalles de un producto
- - Crear Item, que representa la Card de cada producto dentro del listado
- - En ItemDetailContainer, leer la URL con useParams(), obtener el ID y buscar un unico producto con ese ID
- - EN ItemListContainer, leer la URL con useParams(), obtener la cteogria y buscar un listado de productos segun esa categoria
- - IMPORTANTE: Tanto ItemDetail como ItemList, deben leer los datos de forma asíncrona ( useEffect - useState )
+# Install dependencies
+$ npm install
 
-# Comandos GIT
-
-- git init
-- git add .
-- git commit -m "Primer entrega"
-- git branch -M "main"
-- git remote add origin (url-repo)
-- git push -u origin main
+# Run the app
+$ npm run dev
+```
